@@ -1,0 +1,32 @@
+ /*
+  * Copyright (C) Chi Hoang - All Rights Reserved
+  */
+body {
+    margin:0;
+    padding:0;
+	width: 1000px;
+    height: auto;
+	overflow: auto;
+    overflow-x: hidden;
+}
+.nav {
+    font-family: sans-serif;
+    font-size: 11px;
+    padding-top: 10px;
+    padding-bottom: 14px;
+}
+.column1 {
+    font-family: sans-serif;
+    font-size: 11px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-left: 10px;
+    padding-top: 4px;
+}
+.column2 {
+    font-family: sans-serif;
+    font-size: 11px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f0f0f0;
+    padding-left: 10px;
+    padding-top: 4px;
+}

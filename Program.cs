@@ -36,7 +36,7 @@ namespace IP2Location_Lite_IP_Browser
             //startInfo.UseShellExecute = false;
             startInfo.FileName = appPath+"\\php7\\php.exe";
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            startInfo.Arguments = "-S localhost:1972 -t \"" + appPath + "\"";
+            startInfo.Arguments = "-S localhost:1972 -t \"" + appPath + "\\webroot\"";
             
             try
             {
