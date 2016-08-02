@@ -20,7 +20,13 @@ namespace IP2Location_Lite_IP_Browser
 
         public Form1()
         {
+            //http://stackoverflow.com/questions/4009150/c-sharp-winforms-disable-dpi-scaling
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            
             InitializeComponent();
+
+            //WindowState = FormWindowState.Maximized;
 
             string appPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             //Process.Start(appPath+"\\php7\\php.exe -S localhost:1972 -t "+appPath);
@@ -50,22 +56,30 @@ namespace IP2Location_Lite_IP_Browser
             {
                 // Log error.
             }
-
+                       
             CefSettings settings = new CefSettings();
             // Initialize cef with the provided settings
             Cef.Initialize(settings);
             // Create a browser component
-            chromeBrowser = new ChromiumWebBrowser("http://localhost:1972/main.html");
+            chromeBrowser = new ChromiumWebBrowser("http://localhost:1972/main.html")
+            {
+                Dock = DockStyle.Fill,
+                Size = Size,
+            };
+            
+            chromeBrowser.Location = new System.Drawing.Point(0, 0);
+            chromeBrowser.MinimumSize = new System.Drawing.Size(944, 561);
+            chromeBrowser.Size = new System.Drawing.Size(944, 561);
 
             chromeBrowser.BringToFront();
+
             //fill it to the form window.
             chromeBrowser.Dock = DockStyle.Fill;
+
             // Add it to the form
-            //this.Controls.Add(chromeBrowser);
+            this.Controls.Add(chromeBrowser);
 
-            toolStripContainer1.ContentPanel.Controls.Add(chromeBrowser);
-
-            //toolStripContainer1.ContentPanel.Controls.Add(web_view);
+ 
 
         }
 
