@@ -11,7 +11,7 @@ IP2Location Lite IP Address Browser is a simple viewer for the free IP2Location 
 
 2. Requirements
 -Windows 10 x32/x64 (tested)
--Visual Studio 2015 redistributable x64
+-Visual Studio 2015 redistributable x86
 -Microsoft Framework 4.6.1
 
 3. Installation
@@ -26,9 +26,10 @@ Download the beta. Unpack the archive and double-click IP2Location Lite IP Addre
 4.4.1 It requires the free vanilla PHP7 (x86 or x64, thread-safe) in the php7 folder in the application folder.
 
 5. Troubleshooting
-Windows XP/Vista/7 requires .net framework v4. In general Windows requires Visual Studio 2015 redistributable x64 because the application is compiled for x64 platform. When compiled for x86 platform it has some problems with the x86 redistributable!
+Windows XP/Vista/7 requires .net framework v4. In general Windows requires Visual Studio 2015 redistributable x86 because the application is compiled for x86 platform.
 
 6. Todo
-6.1 Browser window is too small on Windows tablet.
+6.1 Browser window is too small on Windows tablet. Current workaround is to right-click application open properties open Compatibility and enable Disable display scaling on high DPI settings or copy manifest file to application folder!
+
 7. Changelog
 02.08.2016 Initial release
