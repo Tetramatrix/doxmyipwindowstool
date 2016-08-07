@@ -783,10 +783,10 @@ class Database {
 	error_reporting(0);
     //error_reporting(E_ALL);
     //ini_set("display_errors",1);
-    //ini_set("memory_limit","300M");
-    
     //$this->h = new hilbert();
-    
+    //set_time_limit(60*2);
+    ini_set('max_execution_time', 300);
+	
     // find the referred file and its size
     $rfile = self::findFile($file);
     $size  = filesize($rfile);

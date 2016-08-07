@@ -1,86 +1,110 @@
  /*
   * Copyright (C) Chi Hoang - All Rights Reserved
   */
+ function scrollTomid(dir) {
+	if (dir=="up") {
+		var pos = window.innerHeight-window.outerHeight/2*-6;
+	} else {
+		var pos = window.innerHeight-window.outerHeight/2*-6;
+	}	
+	console.log("scrollTo:"+ pos); 
+	//http://stackoverflow.com/questions/15691569/javascript-issue-with-scrollto-in-chrome
+	setTimeout(function() {window.scrollTo(0,pos);},500);
+ }			
+ //http://stackoverflow.com/questions/15932650/body-scrollheight-doesnt-work-in-firefox
+ function getDocHeight() {
+    var D = document;
+    return Math.max(
+        Math.max(D.body.scrollHeight, D.documentElement.scrollHeight),
+        Math.max(D.body.offsetHeight, D.documentElement.offsetHeight),
+        Math.max(D.body.clientHeight, D.documentElement.clientHeight)
+    );
+}
+//http://stackoverflow.com/questions/14505224/js-set-window-height-using-current-window-size
+function setWindowHeight(){
+	//var windowHeight = window.innerHeight;
+	var windowHeight = getDocHeight();
+	document.body.style.height = windowHeight + "px";
+	document.body.scrollHeight = windowHeight + "px";
+	console.log("DocBodyStyleHeight:"+document.body.style.height);
+	console.log("WinInnerHeight:"+window.innerHeight);
+	console.log("WinScrollY:"+window.scrollY);
+    console.log("DocBodyScrollHeight:"+document.body.scrollHeight);
+}
+window.addEventListener("resize",setWindowHeight,false);
+
 window.onload = function ready () {
+	 setWindowHeight();
 	 l = new Publisher(new List());
-	 //l.AddCountry(new Subject(100),"FR","France");
-	 //l.AddCountry(new Subject(100),"DE","Germany");
-	 //l.AddCountry(new Subject(100),"EN","England");
-	 //l.AddCountry(new Subject(100),"CN","China")
 	 var iplong=0;
-	 var start=Math.floor(iplong/l.step)*l.step;
-	 var end=(start+100*l.step)-l.step;
-	 l.Request(start,end, "down");
+	 var start=Math.floor(iplong/Number(l.step))*Number(l.step);
+	 var end=(start+100*Number(l.step))-Number(l.step);
+	 l.Request(start,end, "down");	
+	
 	 window.onscroll = function(ev) {
+		 
+		//http://stackoverflow.com/questions/15484084/make-element-fixed-on-scroll
+		var el = document.getElementById('666');
+		
+		if (el != null && document.body.scrollTop > 50){
+			el.style.position = 'fixed';
+			el.style.top = '0px';
+		}
+		else if (el != null)
+		{
+			el.style.position = 'static';
+			el.style.top = 'auto';
+		}
+		
 		//http://blog.grayghostvisuals.com/js/detecting-scroll-position/     
 		if (document.body.scrollTop == 0) {
 			console.log("Top of page");
+			setWindowHeight();
 			
-			//var elem = document.getElementsByClassName('nav');
-			//l.RemoveClass(elem);
-			
-			var observerCount = l.observers.count();
-			if (observerCount>100) {			   
-				for (var a=100,b=observerCount;a<b;a++) {
-					e = window.document.getElementById(l.observers.get(a).ele.id);
-					var elem = document.getElementsByClassName(e.className);
-					l.RemoveClass(elem);	
-					l.RemoveClass(document.getElementsByClassName("linebreak "+e.id));
-				}
-				l.observers.removeAt(100,b);				
-			}
+			var t = l.observers.count();				
 			switch (l.direction) {
-				case "down": {
-					var page = Math.floor((observerCount-100)/100)*l.range + l.range+Math.floor((observerCount-100)/100)*l.step;
-					l.Request(l.from-page-l.step-l.step,l.from-page+l.range-l.step,"up");
+				case "down": {					
+					//var page = Math.floor((a-100)/100)*Number(l.range) + Number(l.range)+Math.floor((a-100)/100)*Number(l.step);
+					if (t<=100) {
+						var page =  Number(l.range);
+					} else if (t<=200) {
+						var page =  Number(l.range)+2*Number(l.step);
+					}
+					l.Request(Number(l.from)-page-Number(l.step)-Number(l.step),Number(l.from)-page+Number(l.range)-Number(l.step),"up");
 					break;
 				};
 				case "up": {
-					l.Request(l.from-l.range,l.from,"up");
+					l.Request(Number(l.from)-Number(l.range),Number(l.from),"up");
 					break;
 				}
 				default: {
-					l.Request(l.from-l.range-l.step-l.step,l.from-l.step,"up");
+					l.Request(Number(l.from)-Number(l.range)-Number(l.step)-Number(l.step),Number(l.from)-Number(l.step),"up");
 					break;
 				}
 			} 
-			
-			console.log(window.innerHeight-window.outerHeight/2*-2);
-			//http://stackoverflow.com/questions/15691569/javascript-issue-with-scrollto-in-chrome
-			setTimeout(function() {window.scrollTo(0,window.innerHeight-window.outerHeight/2*-2);},500);
+			//scrollTomid("up");			
 		}
 		//http://stackoverflow.com/questions/15260184/strange-behaviour-of-chrome-at-window-scrollto
 		if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
 			// you're at the bottom of the page
 			console.log("Bottom of page");
+			setWindowHeight();
 			
-			//var elem = document.getElementsByClassName('nav');
-			//l.RemoveClass(elem);
-
-			var observerCount = l.observers.count();
-			if (observerCount>100) {		
-				for (var a=0,b=observerCount-100;a<b;a++) {
-					e = window.document.getElementById(l.observers.get(a).ele.id);
-					var elem = document.getElementsByClassName(e.className);
-					l.RemoveClass(elem);					
-					l.RemoveClass(document.getElementsByClassName("linebreak "+e.id))
-				}
-				l.observers.removeAt(0,b);
-			}	
 			switch (l.direction) {
 				case "down": {
-					l.Request(l.to+l.step,l.to+l.range+l.step,"down");  
+					l.Request(Number(l.to)+Number(l.step),Number(l.to)+Number(l.range)+Number(l.step),"down");  
 					break;
 				};
 				case "up": {
-					l.Request(l.to+l.range+l.step+l.step,l.to+l.range+l.range+l.step+l.step,"down"); 
+					l.Request(Number(l.to)+Number(l.range)+Number(l.range)+Number(l.step)+Number(l.step),Number(l.to)+Number(l.range)+Number(l.range)+Number(l.range)+Number(l.step)+Number(l.step),"down"); 
 					break;
 				}
 				default: {
-					l.Request(l.to+l.step,l.to+l.range+l.step,"down"); 
+					l.Request(Number(l.to)+Number(l.step),Number(l.to)+Number(l.range)+Number(l.step),"down"); 
 					break;
 				}
 			}
+			//scrollTomid("down");
 		}
 	};
 }
