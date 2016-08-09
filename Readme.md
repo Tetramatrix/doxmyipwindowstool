@@ -1,16 +1,18 @@
 IP2Location Lite IP Address Browser
 
 1. What is does it do?
-IP2Location Lite IP Address Browser is a simple viewer for the free IP2Location Lite database. Technologies it uses are Ajax, Json, HTML, CSS, the Chromium webrowser and PHP7 built-in server.  
+IP2Location Lite IP Address Browser is a simple viewer for the free IP2Location Lite database. It combines several powerful  technologies for example C#, PHP, Ajax, Json, HTML, CSS, the Chromium webrowser and the PHP7 built-in server.  
 
 1.2. Features
-- Supports free ip2location lite database (binary file).
-- Supports sorting for some fields and to reset the view.
-- Infinite scroll.
-- Supports view with 4 different subnet masks 255.255.255.0, 255.255.0.0, 255.0.0.0.
-- Supports filter for country code (beta)
-- Supports a text field and a search button to search for individial ip address.
-- faster search with the optimized IP2Location php library (winner of the IP2Location php library optimization contest 2016).
+- Supports the free IP2location Lite database (DB15 binary file) with millions of updated IP addresses.
+- Supports sorting of the view with 2 different orders (up and down) and to reset it.
+- Supports infinite scroll. Navigate millions of IP addresses with the right scrollbar.
+- Supports a filter with 4 different subnet masks (255.255.255.255, 255.255.255.0, 255.255.0.0,255.0.0.0).
+- Supports a filter with a country code (beta).
+- Supports searching for an ip address.
+- Supports a sticky navigation bar.
+- Asynchronous database query with JS.
+- faster search with the free optimized IP2Location php library (winner of the IP2Location php library optimization contest 2016).
 
 2. Requirements
 -Windows 10 x32/x64 (tested)
@@ -18,7 +20,7 @@ IP2Location Lite IP Address Browser is a simple viewer for the free IP2Location 
 -Microsoft Framework 4.6.1
 
 3. Installation
-Download the beta. Unpack the archive and double-click IP2Location Lite IP Address Browser.exe. Allow the application and PHP to install on your pc! Enjoy!
+Download the beta. Unpack the archive and double-click IP2Location Lite IP Address Browser.exe. Allow the application and PHP to run on your pc! Enjoy!
 
 4. Tutorial
 4.1 The source code
