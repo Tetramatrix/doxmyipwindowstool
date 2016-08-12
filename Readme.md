@@ -1,7 +1,7 @@
 IP2Location Lite IP Address Browser
 
 1. What is does it do?
-IP2Location Lite IP Address Browser is a simple viewer for the free IP2Location Lite database making use C#, PHP, Ajax, Json, HTML, CSS, the Chromium webrowser and the PHP7 built-in server.  
+IP2Location Lite IP Address Browser is a simple viewer for the free IP2Location Lite database making use of C#, JS, PHP, Ajax, Json, HTML, CSS, the Chromium webrowser and the PHP7 built-in server.  
 
 1.2. Features
 - Supports the free IP2location Lite database (DB15 binary file) with millions of updated IP addresses.
@@ -17,6 +17,9 @@ IP2Location Lite IP Address Browser is a simple viewer for the free IP2Location 
 2. Requirements
 -Windows 10 x32/x64 (tested)
 -Visual Studio 2015 redistributable x86
+-Visual Studio 2013 redistributable x86
+-Visual Studio 2010 redistributable x86
+-Visual Studio 2008 redistributable x86
 -Microsoft Framework 4.6.1
 
 3. Installation
@@ -31,7 +34,7 @@ Download the beta. Unpack the archive and double-click IP2Location Lite IP Addre
 4.4.1 It requires the free vanilla PHP7 in the php7 folder in the application folder.
 
 5. Troubleshooting
-Windows XP/Vista/7 may requires .net framework v4.6.1. Also Windows may requires Visual Studio 2015 redistributable x86 because the application is compiled for x86 platform.
+Windows XP/Vista/7 may requires .net framework v4.6.1. Also Windows may requires Visual Studio 2008 redistributable x86, Visual Studio 2010 redistributable x86, Visual Studio 2013 redistributable x86, Visual Studio 2015 redistributable x86 because the application is compiled for x86 platform.
 
 6. Todo
 6.1 JS hangs on Windows tablet.
@@ -39,3 +42,4 @@ Windows XP/Vista/7 may requires .net framework v4.6.1. Also Windows may requires
 7. Changelog
 02.08.2016 Initial release
 07.08.2016 Major update
+12.08.2016 Bugfix high dpi aware tablet pc 
