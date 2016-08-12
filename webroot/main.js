@@ -256,6 +256,7 @@ var Publisher = function (observers)
 					onfocus=\'this.value=""; this.style.color="black";return false;\' name=\'ipaddr\' value=\'IP address\' \> \
 					<input class=\'button\' onclick=\'l.Search("#");\' type=\'button\' value=\'Search\'> \
 					';
+					//this.AddNav();
   return this;
 }
 
