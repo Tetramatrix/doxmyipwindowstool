@@ -36,10 +36,7 @@ Download the beta. Unpack the archive and double-click IP2Location Lite IP Addre
 5. Troubleshooting
 Windows XP/Vista/7 may requires .net framework v4.6.1. Also Windows may requires Visual Studio 2008 redistributable x86, Visual Studio 2010 redistributable x86, Visual Studio 2013 redistributable x86, Visual Studio 2015 redistributable x86 because the application is compiled for x86 platform.
 
-6. Todo
-6.1 JS hangs on Windows tablet.
-
-7. Changelog
+6. Changelog
 02.08.2016 Initial release
 07.08.2016 Major update
 12.08.2016 Bugfix high dpi aware tablet pc 
