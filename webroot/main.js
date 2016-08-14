@@ -270,6 +270,19 @@ Publisher.prototype = {
 		console.log("scrollTo:"+ pos); 
 		//http://stackoverflow.com/questions/15691569/javascript-issue-with-scrollto-in-chrome
 		setTimeout(function() {window.scrollTo(0,pos);},500);
+		
+		//http://stackoverflow.com/questions/15484084/make-element-fixed-on-scroll
+		var el = document.getElementById('666');
+		
+		if (el != null && document.body.scrollTop > 50){
+			el.style.position = 'fixed';
+			el.style.top = '0px';
+		}
+		else if (el != null)
+		{
+			el.style.position = 'static';
+			el.style.top = 'auto';
+		}
 	},			
     SelectCC : function (id) {
         this.ccvalue = document.getElementById(id).options[document.getElementById(id).selectedIndex].value;
