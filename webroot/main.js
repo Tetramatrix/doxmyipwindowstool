@@ -220,7 +220,7 @@ var Publisher = function (observers)
   this.to=0;  
   this.observers = observers;
   this.seed = 768716276;
-  this.tstart = 50;
+  this.tstart = 1000;
   this.tinterval = 1000000;
   this.step = 256*256*256;
   this.range=(100*this.step)-this.step;
@@ -256,7 +256,7 @@ var Publisher = function (observers)
 					onfocus=\'this.value=""; this.style.color="black";return false;\' name=\'ipaddr\' value=\'IP address\' \> \
 					<input class=\'button\' onclick=\'l.Search("#");\' type=\'button\' value=\'Search\'> \
 					';
-					//this.AddNav();
+					this.AddNav();
   return this;
 }
 
@@ -711,8 +711,9 @@ Publisher.prototype = {
 			var t=document.getElementById(this.observers.sort+r).innerHTML;
 			document.getElementById(this.observers.sort+r).innerHTML = "[ "+t+" ]";
 		}		
-		this.observers.get(0).navigation=1;
-		
+		if (this.observerList.length>1) {
+			this.observers.get(0).navigation=1;
+		}
 /*		
 		for(var i=0; i < observerCount; i++){
 			if (i % this.n == 0 && i != 0 && this.observers.get(i).type=="ip" && this.observers.get(i).visibility=="show") {		  
@@ -751,7 +752,7 @@ Publisher.prototype = {
 			this.AddNav();  
 		} else  if (a.ele.id==id && i==observerZ-1 && a.navigation==0 && this.direction=="down") {
 			a.navigation=1;
-			this.AddNav();  
+			//this.AddNav();  
 		}
    }
 }
