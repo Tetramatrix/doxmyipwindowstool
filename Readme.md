@@ -8,7 +8,7 @@ IP2Location Lite IP Address Browser is a simple viewer for the free IP2Location 
 - Supports sorting of the view with 2 different orders (up and down) and to reset it.
 - Supports infinite scroll. Navigate millions of IP addresses with the right scrollbar.
 - Supports a filter with 4 different subnet masks (255.255.255.255, 255.255.255.0, 255.255.0.0,255.0.0.0).
-- Supports a filter with a country code (beta).
+- Supports a filter with a country code.
 - Supports searching for an ip address.
 - Supports a sticky navigation bar.
 - Asynchronous database query with JS.
@@ -40,3 +40,4 @@ Windows XP/Vista/7 may requires .net framework v4.6.1. Also Windows may requires
 02.08.2016 Initial release
 07.08.2016 Major update
 12.08.2016 Bugfix high dpi aware tablet pc 
+31.08.2016 Bugfix country selection

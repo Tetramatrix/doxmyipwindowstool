@@ -173,6 +173,18 @@ List.prototype = {
 	this.sort = "sdtimezone";
 	this.func = this.sdtimezone;
   },
+  selectcc : function ( index ) {
+    for (var i=0,x=this.observerList.length;i<x;i++) {
+      if (this.observerList[i].country==index || index=="All") {
+        this.observerList[i].visibility="show";
+      } else {
+        this.observerList[i].visibility="hidden";
+      }
+    }
+    this.target();
+	this.sort = "selectcc";
+	this.func = this.selectcc;
+  },
   indexOf : function( obj, startIndex ){
     var i = startIndex;
       while( i < this.observerList.length ){
@@ -272,24 +284,8 @@ Publisher.prototype = {
 		setTimeout(function() {window.scrollTo(0,pos);},500);
 	},			
     SelectCC : function (id) {
-		alert("Beta function. Sometimes it could take a very long time. If it's too long please refresh the browser!");
-        this.ccvalue = document.getElementById(id).options[document.getElementById(id).selectedIndex].value;
-		//document.body.innerHTML = '';
-		//this.observers.observerList=[];		
-		switch (this.direction) {
-			case "down": {
-				this.Request(Number(this.from),Number(this.to)+Number(this.step),"down");  
-				break;
-			};
-			case "up": {
-				this.Request(Number(this.from),Number(this.to)+Number(this.step),"down"); 
-				break;
-			}
-			default: {
-				this.Request(Number(this.from),Number(this.to)+Number(this.step),"down"); 
-				break;
-			}
-		}
+		this.ccvalue = document.getElementById(id).options[document.getElementById(id).selectedIndex].value;
+		this.observers.selectcc(this.ccvalue);
     },
 	//http://stackoverflow.com/questions/17987015/ip-address-validation-with-proper-dots-in-between
 	isIpAddress : function (s) {
@@ -325,6 +321,7 @@ Publisher.prototype = {
 				break;
 			}
 		}
+		this.AddNav();
 	},
 	 //http://stackoverflow.com/questions/15932650/body-scrollheight-doesnt-work-in-firefox
 	getDocHeight : function () {
@@ -708,7 +705,7 @@ Publisher.prototype = {
 		a.innerHTML = t.replace(/%/g, sel);		
 		document.body.insertBefore(a,document.body.childNodes[0]);
 		document.getElementById("step"+this.step+r).innerHTML = "[ "+this.stepmenu[this.step][0]+" ]";
-		if (this.observers.sort!="") {
+		if (this.observers.sort!="" && this.observers.sort!="selectcc") {
 			var t=document.getElementById(this.observers.sort+r).innerHTML;
 			document.getElementById(this.observers.sort+r).innerHTML = "[ "+t+" ]";
 		}		
