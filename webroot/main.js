@@ -469,14 +469,18 @@ Publisher.prototype = {
 						if (t>100) {		
 							for (var a=0;a<p;a++) {
 								e = window.document.getElementById(this.observers.get(a).ele.id);
-								var elem = document.getElementsByClassName(e.className);
-								this.RemoveClass(elem);					
-								this.RemoveClass(document.getElementsByClassName("linebreak "+e.id))
+								if (e!=null) {
+									var elem = document.getElementsByClassName(e.className);
+									this.RemoveClass(elem);					
+									this.RemoveClass(document.getElementsByClassName("linebreak "+e.id))
+								}
 							}
-							this.observers.removeAt(0,p);
+							if (e!=null) {
+								this.observers.removeAt(0,p);
+							}
 						}					
 						if (this.observers.sort!="") {
-							this.observers.func();
+							this.observers.func(this.ccvalue);
 						}
 						this.scrollTomid("down");
 					}
@@ -491,22 +495,26 @@ Publisher.prototype = {
 								  }
 							}
 							if (k==t || t==0) {
-							  this.Up(new Subject(100),j[i].ipaddr,j[i].countryCode,
-									j[i].regionName,j[i].cityName,j[i].lat,j[i].long,j[i].zipCode,j[i].timeZone,i);                 
+								this.Up(new Subject(100),j[i].ipaddr,j[i].countryCode,
+								j[i].regionName,j[i].cityName,j[i].lat,j[i].long,j[i].zipCode,j[i].timeZone,i);                 
 							}
 						}
 						var t = this.observers.count();
 						if (t>100) {			   
 							for (var a=100,b=t;a<b;a++) {
 								e = window.document.getElementById(this.observers.get(a).ele.id);
-								var elem = document.getElementsByClassName(e.className);
-								this.RemoveClass(elem);	
-								this.RemoveClass(document.getElementsByClassName("linebreak "+e.id));
+								if (e!=null) {
+									var elem = document.getElementsByClassName(e.className);
+									this.RemoveClass(elem);	
+									this.RemoveClass(document.getElementsByClassName("linebreak "+e.id));
+								}
 							}
-							this.observers.removeAt(100,b);				
+							if (e!=null) {
+								this.observers.removeAt(100,b);
+							}
 						}
 						if (this.observers.sort!="") {
-							this.observers.func();
+							this.observers.func(this.ccvalue);
 						}		
 						this.scrollTomid("up");
 					}
