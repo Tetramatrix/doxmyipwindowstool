@@ -38,6 +38,7 @@ namespace IP2Location_Lite_IP_Browser
             this.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             
             InitializeComponent();
+            this.Text = "Doxmyip";
 
             //WindowState = FormWindowState.Maximized;
 
