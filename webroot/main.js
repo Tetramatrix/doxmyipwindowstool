@@ -174,9 +174,11 @@ List.prototype = {
 	this.func = this.sdtimezone;
   },
   selectcc : function ( index ) {
+	 var j=0;
     for (var i=0,x=this.observerList.length;i<x;i++) {
       if (this.observerList[i].country==index || index=="All") {
-        this.observerList[i].visibility="show";
+        ++j;
+		this.observerList[i].visibility="show";
       } else {
         this.observerList[i].visibility="hidden";
       }
@@ -184,6 +186,7 @@ List.prototype = {
     this.target();
 	this.sort = "selectcc";
 	this.func = this.selectcc;
+	l.scrollTomid("up",j);
   },
   indexOf : function( obj, startIndex ){
     var i = startIndex;
@@ -242,43 +245,46 @@ var Publisher = function (observers)
   this.timeout = 900*60*3;
 
 	this.navbar ='<ul id="drop-nav"><li><a href="javascript:void();">Sort</a><ul>	\
-					<li><a id="suipaddr#" href="javascript:void(0);" onclick="l.observers.suipaddr(\'#\');">+ IPaddress</a></li>			\
-					<li><a id="sdipaddr#" href="javascript:void(0);" onclick="l.observers.sdipaddr(\'#\');">- IPaddress</a></li>			\
-					<li><a id="sucity#" href="javascript:void(0);" onclick="l.observers.sucity(\'#\');">+ city</a></li>		\
-					<li><a id="sdcity#" href="javascript:void(0);" onclick="l.observers.sdcity(\'#\');">- city</a></li>		\
-					<li><a id="suregion#" href="javascript:void(0);" onclick="l.observers.suregion(\'#\');">+ region</a></li>		\
-					<li><a id="sdregion#" href="javascript:void(0);" onclick="l.observers.sdregion(\'#\');">- region</a></li>		\
-					<li><a id="sucountry#" href="javascript:void(0);" onclick="l.observers.sucountry(\'#\');">+ country</a></li>		\
-					<li><a id="sdcountry#" href="javascript:void(0);" onclick="l.observers.sdcountry(\'#\');">- country</a></li>		\
-					<li><a id="sutimezone#" href="javascript:void(0);" onclick="l.observers.sutimezone(\'#\');">+ timezone</a></li>		\
-					<li><a id="sdtimezone#" href="javascript:void(0);" onclick="l.observers.sdtimezone(\'#\');">- timezone</a></li>		\
-					<li><a id="suzipcode#" href="javascript:void(0);" onclick="l.observers.suzipcode(\'#\');">+ zipcode</a></li>		\
-					<li><a id="sdzipcode#" href="javascript:void(0);" onclick="l.observers.sdzipcode(\'#\');">- zipcode</a></li>		\
-					<li><a id="reset# href="javascript:void(0);" onclick="l.observers.reset(\'#\');">Reset</a></li> \
-					</ul></li>	\
-					</ul> \
-					<ul id="drop-nav"><li><a href="javascript:void(0);">Interval</a><ul>	\
-					<li><a id=\'step1#\' href="javascript:void(0);" onclick="l.changeStep(\'#\',\'1\');">1</a></li>			\
-					<li><a id=\'step256#\' href="javascript:void(0);" onclick="l.changeStep(\'#\',\'256\');">2</a></li>	    \
-					<li><a id=\'step65536#\' href="javascript:void(0);" onclick="l.changeStep(\'#\',\'65536\');">3</a></li>	    \
-					<li><a id=\'step16777216#\' href="javascript:void(0);" onclick="l.changeStep(\'#\',\'16777216\');">4</a></li>	    \
-					</ul></li> \
-					Country Code:%\
-					<input class=\'ipaddr\' type=\'text\' id=\'ipaddr#\' onblur=\'if(this.value=="") {this.value="IP address";this.style.color="LightGray" } else { this.style.color="red"} ;return false;\' \
-					onfocus=\'this.value=""; this.style.color="black";return false;\' name=\'ipaddr\' value=\'IP address\' \> \
-					<input class=\'button\' onclick=\'l.Search("#");\' type=\'button\' value=\'Search\'> \
-					';
-					this.AddNav();
+				<li><a id="suipaddr#" href="javascript:void(0);" onclick="l.observers.suipaddr(\'#\');">+ IPaddress</a></li>			\
+				<li><a id="sdipaddr#" href="javascript:void(0);" onclick="l.observers.sdipaddr(\'#\');">- IPaddress</a></li>			\
+				<li><a id="sucity#" href="javascript:void(0);" onclick="l.observers.sucity(\'#\');">+ city</a></li>		\
+				<li><a id="sdcity#" href="javascript:void(0);" onclick="l.observers.sdcity(\'#\');">- city</a></li>		\
+				<li><a id="suregion#" href="javascript:void(0);" onclick="l.observers.suregion(\'#\');">+ region</a></li>		\
+				<li><a id="sdregion#" href="javascript:void(0);" onclick="l.observers.sdregion(\'#\');">- region</a></li>		\
+				<li><a id="sucountry#" href="javascript:void(0);" onclick="l.observers.sucountry(\'#\');">+ country</a></li>		\
+				<li><a id="sdcountry#" href="javascript:void(0);" onclick="l.observers.sdcountry(\'#\');">- country</a></li>		\
+				<li><a id="sutimezone#" href="javascript:void(0);" onclick="l.observers.sutimezone(\'#\');">+ timezone</a></li>		\
+				<li><a id="sdtimezone#" href="javascript:void(0);" onclick="l.observers.sdtimezone(\'#\');">- timezone</a></li>		\
+				<li><a id="suzipcode#" href="javascript:void(0);" onclick="l.observers.suzipcode(\'#\');">+ zipcode</a></li>		\
+				<li><a id="sdzipcode#" href="javascript:void(0);" onclick="l.observers.sdzipcode(\'#\');">- zipcode</a></li>		\
+				<li><a id="reset# href="javascript:void(0);" onclick="l.observers.reset(\'#\');">Reset</a></li> \
+				</ul></li>	\
+				</ul> \
+				<ul id="drop-nav"><li><a href="javascript:void(0);">Interval</a><ul>	\
+				<li><a id=\'step1#\' href="javascript:void(0);" onclick="l.changeStep(\'#\',\'1\');">1</a></li>			\
+				<li><a id=\'step256#\' href="javascript:void(0);" onclick="l.changeStep(\'#\',\'256\');">2</a></li>	    \
+				<li><a id=\'step65536#\' href="javascript:void(0);" onclick="l.changeStep(\'#\',\'65536\');">3</a></li>	    \
+				<li><a id=\'step16777216#\' href="javascript:void(0);" onclick="l.changeStep(\'#\',\'16777216\');">4</a></li>	    \
+				</ul></li> \
+				Country Code:%\
+				<input class=\'ipaddr\' type=\'text\' id=\'ipaddr#\' onblur=\'if(this.value=="") {this.value="IP address";this.style.color="LightGray" } else { this.style.color="red"} ;return false;\' \
+				onfocus=\'this.value=""; this.style.color="black";return false;\' name=\'ipaddr\' value=\'IP address\' \> \
+				<input class=\'button\' onclick=\'l.Search("#");\' type=\'button\' value=\'Search\'> \
+				';
+				this.AddNav();
   return this;
 }
 
 Publisher.prototype = {
-	scrollTomid : function (dir) {
+	scrollTomid : function (dir,rows) {
+		dir = dir || "down";
+		rows = rows || this.observers.count();
 		if (dir=="up") {
 			var pos = window.innerHeight-window.outerHeight/10;
 		} else {
 			var pos = window.innerHeight-window.outerHeight/10;
 		}	
+		pos=rows/100*pos-100;
 		console.log("scrollTo:"+ pos); 
 		//http://stackoverflow.com/questions/15691569/javascript-issue-with-scrollto-in-chrome
 		setTimeout(function() {window.scrollTo(0,pos);},500);
@@ -398,16 +404,46 @@ Publisher.prototype = {
 			document.getElementById("ipaddr"+id).value = "IP address";			
 		}
 	},
+	Map : function  () {
+		var i=0; var me=this; var dat={};
+		for (var i=0,x=Math.min(this.observers.observerList.length,300);i<x;i++) {
+			if (this.observers.observerList[i].country == this.ccvalue) {
+				dat["\""+this.observers.observerList[i].latitude+"\",\""+this.observers.observerList[i].longitude+"\""] = {"lat":this.observers.observerList[i].latitude,"lng":this.observers.observerList[i].longitude};
+				if (Object.keys(dat).length > 50) {
+					break;
+				}
+			}
+		}
+		if (Object.keys(dat).length > 2 && Object.keys(dat).length < 100) {			
+			this.xhr[i]= this.CreateRequestObject();		
+			if (this.xhr[i]) {
+				this.xhr[i].open('GET', 'map.php?points='
+						+JSON.stringify(dat),
+						true);
+				this.xhr[i].timeout = this.timeout; // time in milliseconds
+				this.xhr[i].ontimeout = function (e) {
+						// XMLHttpRequest timed out. Do something here.
+					alert("Sorry, not found! Please try again!");
+				};
+				this.xhr[i].responseType = 'json';
+				this.xhr[i].onreadystatechange = null;
+				this.xhr[i].addEventListener( "load", function(e) { me.ResMap(e);}, false);
+				this.xhr[i].send(null);
+			}
+		} else {
+			alert ("Not enough points!");
+		}
+	},
 	Request : function  (from, to , direction) {
 		var i=0; var me=this;
-        //this.from=from;
-        //this.to=to;
+        this.from = from || this.from;
+        this.to = to || this.to;
         this.direction=direction || "down";
 		this.xhr[i]= this.CreateRequestObject();		
 		if (this.xhr[i]) {
 			this.xhr[i].open('GET', 'ajax.php?from='
-					+from
-					+'&to='+to
+					+this.from
+					+'&to='+this.to
 					+'&step='+this.step
 					+'&dir='+this.direction
                     +'&cc='+this.ccvalue,
@@ -422,6 +458,30 @@ Publisher.prototype = {
 			this.xhr[i].addEventListener( "load", function(e) { me.Response(e);}, false);
 			this.xhr[i].send(null);
 		}
+	},
+	ResMap : function (request) {
+		j=request.target.response;
+		//alert(j);
+		substring = "png";
+		if (j!="" && j.indexOf(substring) !== -1) {
+			document.body.innerHTML = '';	
+			var img = document.createElement("img");
+			img.src = j;
+			window.document.body.appendChild(img);	
+			//window.document.write("<input class=\'button\' onclick=\'l.Request();\' type=\'button\' value=\'Back\'>");		
+			var button = document.createElement("input");
+			button.type = "button";
+			button.value = "Back";
+			button.className = "Button"
+			button.onclick = function(){
+				l.Request();return false;
+			};
+			window.document.body.appendChild(button);
+			this.scrollTomid("up",1);
+		} else if (j!="") {
+			alert ("No imagecreate function!");
+		}
+		this.AddNav();
 	},
 	Response : function (request) {
 		j=request.target.response;	
@@ -481,8 +541,9 @@ Publisher.prototype = {
 						}					
 						if (this.observers.sort!="") {
 							this.observers.func(this.ccvalue);
+						} else {
+							this.scrollTomid("down");
 						}
-						this.scrollTomid("down");
 					}
 					break;
 					case "up" : {					
@@ -515,14 +576,15 @@ Publisher.prototype = {
 						}
 						if (this.observers.sort!="") {
 							this.observers.func(this.ccvalue);
-						}		
-						this.scrollTomid("up");
+						} else {		
+						 this.scrollTomid("up");
+						}
 					}
 				}
 				this.setWindowHeight();
+				this.AddNav();
 			}
-		}
-		
+		}		
   },
   Up : function(ip,ipaddr,country,region,city,latitude,longitude,zipcode,timezone,z) {
 	var me=this;
@@ -698,6 +760,13 @@ Publisher.prototype = {
         a.className = "nav";
         
         var t = this.navbar.replace(/#/g, r);
+		
+		if (observerCount > 0 && this.ccvalue != "" && this.ccvalue != "All") {
+			t += '<input class=\'button\' onclick=\'l.Map("#");\' type=\'button\' value=\'Map\'>';
+		}
+		
+		//t += '<div style="float:right;padding-right:100px">If the list is empty move the scrollbar up and down!</div>';
+		
         this.cc.sort();
         //http://stackoverflow.com/questions/17001961/javascript-add-select-programmatically
         var options_str = '<option value="All">All</option>';
@@ -705,7 +774,13 @@ Publisher.prototype = {
 		  if (cc==this.ccvalue) {
 			options_str += '<option selected="selected" value="' + cc + '">' + cc + '</option>';  
 		  }	else {
-			options_str += '<option value="' + cc + '">' + cc + '</option>';  
+			var list=[];
+			for (i=0,e=observerCount;i<e;i++) {				
+				if (this.observers.get(i).country == cc && !list[cc]) {
+					list[cc]=true;
+					options_str += '<option value="' + cc + '">' + cc + '</option>';
+				}
+			}	
 		  }
         },this);
         sel ="<select class='sel' onChange=\"l.SelectCC('Select"+r+"');\" id=\"Select"+r+"\" name=\"cc"+r+"\">"+ options_str + "</select>";

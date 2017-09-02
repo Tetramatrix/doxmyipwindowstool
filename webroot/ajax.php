@@ -1,4 +1,11 @@
 <?php
+/***************************************************************
+* Copyright notice
+*
+* (c) 2010-2017 Chi Hoang (info@chihoang.de)
+*  All rights reserved
+*
+***************************************************************/
 require_once 'IP2LocationCalc.php';
                      
 error_reporting(E_ERROR | E_PARSE);
@@ -46,13 +53,13 @@ if ($cc != "All") {
 		if ($records["countryCode"]!=$cc) {
             $b=sprintf('%u', long2ip($long));
 			$a=explode(".",$b)[0];
-			$step4[$a]= [$a,$long,$records["countryCode"]];	
+			$step4[$a]=[$a,$long,$records["countryCode"]];	
 		}
 	}         
 	while ($from<$to && $from>=0 || count($ip_data)<99) {
         if (count($ip_data)>99) break;
         $b=sprintf('%u', long2ip($from));
-		$a = explode(".",$b)[0];
+		$a=explode(".",$b)[0];
         if (!$step4[$a] && $a<129) {			
 			$records = $db->lookup(long2ip($from), \IP2Location\Database::ALL);
 			if ($cc==$records['countryCode'] || $cc=="All") {
@@ -94,6 +101,20 @@ if ($cc != "All") {
 					   ];
 		$from+=$step;
 	}
+}
+
+if (empty($ip_data)) {
+$ip_data[] = ['ipaddr'=>"Not found!",
+			   'countryCode'=>"Not found!",
+			   'regionName'=>"Not found!",
+			   'cityName'=>"Not found!",
+			   'lat'=>"Not found!",
+			   'long'=>"Not found!",
+			   'zipCode'=>"Not found!",
+			   'timeZone'=>"Not found!",
+			   'from'=>"Not found!",
+			   'to'=>"Not found!"
+		   ];	
 }
 
 		

@@ -18,7 +18,7 @@
  *
  */
 /*
- * Copyright (C) Co-Author: 2016 Chi Hoang
+ * Copyright (C) Co-Author: 2016-2017 Chi Hoang
  * All rights reserved
  *
  */

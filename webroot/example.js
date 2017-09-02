@@ -39,8 +39,8 @@ window.onload = function ready () {
 	 var iplong=0;
 	 var start=Math.floor(iplong/Number(l.step))*Number(l.step);
 	 var end=(start+100*Number(l.step))-Number(l.step);
-	 l.Request(start,end, "down");	
-	
+	 l.Request(start,end, "down");
+	 
 	 window.onscroll = function(ev) {
 		 
 		//http://stackoverflow.com/questions/15484084/make-element-fixed-on-scroll
