@@ -1,4 +1,4 @@
-IP2Location Lite IP Address Browser
+Doxmyip IP Address Browser
 
 1. What is does it do?
 IP2Location Lite IP Address Browser is a simple viewer for the free IP2Location Lite database making use of C#, JS, PHP, Ajax, Json, HTML, CSS, the Chromium webrowser and the PHP7 built-in server.  
