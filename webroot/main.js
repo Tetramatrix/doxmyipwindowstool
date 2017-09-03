@@ -1,6 +1,10 @@
- /*
-  * Copyright (C) Chi Hoang - All Rights Reserved
-  */
+/* * *************************************************************
+ * Copyright notice
+ *
+ * (c) 2013-2017 Chi Hoang
+ *  All rights reserved
+ *
+ * **************************************************************/
   
 function List() {
   this.observerList = [];
@@ -104,7 +108,7 @@ List.prototype = {
   suipaddr  : function (index) {
     this.observerList.sort(function(a,b){return (a.type=="ip") ? (a.iplong > b.iplong) ? 1 : (b.iplong > a.iplong) ? -1 : 0 : -1;});
     this.target();
-	this.sort = "sdipaddr";
+	this.sort = "suipaddr";
 	this.func = this.suipaddr;
   },
   sdipaddr  : function (index) {
@@ -293,6 +297,14 @@ Publisher.prototype = {
 		this.ccvalue = document.getElementById(id).options[document.getElementById(id).selectedIndex].value;
 		this.observers.selectcc(this.ccvalue);
     },
+	Reset : function () {
+		this.ccvalue = "All";
+		this.observers.selectcc(this.ccvalue);
+	},
+	Cache : function () {
+		this.observers.func(this.ccvalue);
+		//this.scrollTomid("up");
+	},
 	//http://stackoverflow.com/questions/17987015/ip-address-validation-with-proper-dots-in-between
 	isIpAddress : function (s) {
 	  if (typeof s !== 'string') { return false; }
@@ -342,6 +354,9 @@ Publisher.prototype = {
 	setWindowHeight : function (){
 		//var windowHeight = window.innerHeight;
 		var windowHeight = this.getDocHeight();
+		if (windowHeight > 2550) {
+			windowHeight = 2550;
+		}
 		document.body.style.height = windowHeight + "px";
 		document.body.scrollHeight = windowHeight + "px";
 		console.log("DocBodyStyleHeight:"+document.body.style.height);
@@ -474,7 +489,8 @@ Publisher.prototype = {
 			button.value = "Back";
 			button.className = "Button"
 			button.onclick = function(){
-				l.Request();return false;
+				//l.Request();return false;
+				l.Cache();return false;
 			};
 			window.document.body.appendChild(button);
 			this.scrollTomid("up",1);
@@ -577,7 +593,7 @@ Publisher.prototype = {
 						if (this.observers.sort!="") {
 							this.observers.func(this.ccvalue);
 						} else {		
-						 this.scrollTomid("up");
+							this.scrollTomid("up");
 						}
 					}
 				}
@@ -760,6 +776,8 @@ Publisher.prototype = {
         a.className = "nav";
         
         var t = this.navbar.replace(/#/g, r);
+		
+		t += '<input class=\'button\' onclick=\'l.Reset();\' type=\'button\' value=\'Reset\'> ';
 		
 		if (observerCount > 0 && this.ccvalue != "" && this.ccvalue != "All") {
 			t += '<input class=\'button\' onclick=\'l.Map("#");\' type=\'button\' value=\'Map\'>';

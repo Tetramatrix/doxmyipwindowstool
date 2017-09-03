@@ -1,6 +1,10 @@
- /*
-  * Copyright (C) Chi Hoang - All Rights Reserved
-  */
+/***************************************************************
+* Copyright notice
+*
+* (c) 2010-2017 Chi Hoang
+*  All rights reserved
+*
+***************************************************************/
  function scrollTomid(dir) {
 	if (dir=="up") {
 		var pos = window.innerHeight-window.outerHeight/2*-6;
